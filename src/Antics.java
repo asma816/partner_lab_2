@@ -11,6 +11,16 @@ public class Antics {
      * @return a true or false depending on if the text can be spelled the same backwards
      */
     public static boolean isPalindrome(String text) {
+         text = text.toLowerCase();
+        int left = 0, right = text.length() - 1;
+        while (left < right) {
+            if (text.charAt(left) != text.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
     /**
      * Method tests if inputted text is spelled in alphabetical order, returns true if it is
@@ -18,6 +28,13 @@ public class Antics {
      * @return a true or false depending on if the text is spelled in alphabetical order
      */
     public static boolean isAbecedarian(String text) {
+        text = text.toLowerCase();
+        for (int i = 0; i < text.length() - 1; i++) {
+            if (text.charAt(i) > text.charAt(i + 1)) {
+                return false;
+            }
+        }
+        return true;
     }
     /**
      * Method tests if inputted text contains all 26 letters in the alphabet at least once, returns true if it does
@@ -50,3 +67,18 @@ public class Antics {
         return text;
     }
 }
+
+ public static void main(String[] args) {
+     /**
+     *Test isPalindrome
+     */
+        System.out.println("Palindrome Test:");
+        System.out.println("Racecar: " + isPalindrome("Racecar")); // true
+        System.out.println("Hello: " + isPalindrome("Hello")); // false
+      /**
+        *Test isAbecedarian
+        */
+        System.out.println("\nAbecedarian Test:");
+        System.out.println("Access: " + isAbecedarian("access")); // true
+        System.out.println("World: " + isAbecedarian("world")); // false
+
